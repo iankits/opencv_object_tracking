@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( captureFrames )
+find_package( OpenCV REQUIRED )
+add_executable( capture_frames captureFrames.cpp )
+target_link_libraries( capture_frames ${OpenCV_LIBS} )
