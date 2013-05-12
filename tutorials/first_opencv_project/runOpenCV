@@ -1,0 +1,1 @@
+g++ main.cpp -o example -I /opt/local/include -L/opt/local/lib -lopencv_highgui -lopencv_calib3d -lopencv_legacy -lopencv_core
