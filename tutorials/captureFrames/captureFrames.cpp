@@ -9,6 +9,13 @@
  * @Output:
  *   Video Properties like Frame height, width and number of frames.
  *   And a Text File called "numberOfFrame.txt"
+ *
+ * @Usage:
+ * For compiling and creating executable file and running the executable
+ *   $ ./make_prj
+ *   $ ./capture_frames sample_773-10.mp4 
+ * For cleaning files created during cmake and make command.
+ *   $ . cmake_clean
  *=====================================================================*/
 
 #include <stdio.h>
