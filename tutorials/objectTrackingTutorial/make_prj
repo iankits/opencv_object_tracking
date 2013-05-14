@@ -1,0 +1,12 @@
+#!/bin/sh
+# Does cmake and if success then make
+
+echo -e "\n \t### CMAKE Command EXECUTED ###"
+cmake .
+
+if [ $? -eq 0 ]; then
+	echo -e "\n\t### MAKE Command EXECUTED ###"
+	make
+else
+	echo -e "\n\t\tError Making File!!"
+fi
