@@ -1,6 +1,8 @@
 /*
-Program to detect Turtle using Haar Training
- */
+* Program to detect Turtle using Haar Training
+* 
+* USAGE: ./turtledetect <video>
+*/
 
 #include<stdio.h>
 #include<cv.h>
