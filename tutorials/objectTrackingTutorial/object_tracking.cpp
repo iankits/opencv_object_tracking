@@ -18,7 +18,7 @@
 #include <iostream>
 #include <highgui.h>
 #include <cv.h>
-#include <istream>
+#include <fstream>
 
 using namespace cv;
 //initial min and max HSV filter values.
@@ -50,12 +50,6 @@ void on_trackbar( int, void* )
 {//This function gets called whenever a
 	// trackbar position is changed
 	frames_stream << H_MIN << " " << H_MAX << " " << S_MIN << " " << S_MAX << " " << V_MIN << " " << V_MAX << "\n";
-	createTrackbar( "H_MIN", trackbarWindowName, &H_MIN, H_MAX, on_trackbar );
-    createTrackbar( "H_MAX", trackbarWindowName, &H_MAX, H_MAX, on_trackbar );
-    createTrackbar( "S_MIN", trackbarWindowName, &S_MIN, S_MAX, on_trackbar );
-    createTrackbar( "S_MAX", trackbarWindowName, &S_MAX, S_MAX, on_trackbar );
-    createTrackbar( "V_MIN", trackbarWindowName, &V_MIN, V_MAX, on_trackbar );
-    createTrackbar( "V_MAX", trackbarWindowName, &V_MAX, V_MAX, on_trackbar );
 }
 
 string intToString(int number){
@@ -171,6 +165,11 @@ int main(int argc, char* argv[])
 {
 	//some boolean variables for different functionality within this
 	//program
+	if( argc < 2 ){
+		printf( "\n Error! No video data!!! \n" );
+		return -1;
+	}
+	
     bool trackObjects = true;
     bool useMorphOps = true;
 	//Matrix to store each frame of the webcam feed
@@ -185,8 +184,13 @@ int main(int argc, char* argv[])
 	createTrackbars();
 	//video capture object to acquire webcam feed
 	VideoCapture capture;
+	
+	if(!capture.open(argv[1])){
+		exit(1);         // Exit if fail
+	}
+	
 	//open capture object at location zero (default location for webcam)
-	capture.open(0);
+	//capture.open(0);
 	//set height and width of capture frame
 	capture.set(CV_CAP_PROP_FRAME_WIDTH,FRAME_WIDTH);
 	capture.set(CV_CAP_PROP_FRAME_HEIGHT,FRAME_HEIGHT);
@@ -218,7 +222,12 @@ int main(int argc, char* argv[])
 
 		//delay 30ms so that screen can refresh.
 		//image will not appear without this waitKey() command
-		waitKey(30);
+		waitKey(10);
+		int c = cvWaitKey(15);    
+		//If 'ESC' is pressed, break the loop
+		if((char)c==27 ){
+			break;
+		}
 	}
 
 	return 0;
