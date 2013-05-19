@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+project( detectContours )
+find_package( OpenCV REQUIRED )
+add_executable( detectcontours detect_contours.cpp )
+target_link_libraries( detectcontours ${OpenCV_LIBS} )
