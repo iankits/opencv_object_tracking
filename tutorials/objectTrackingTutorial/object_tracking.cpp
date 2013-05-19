@@ -18,6 +18,7 @@
 #include <iostream>
 #include <highgui.h>
 #include <cv.h>
+#include <istream>
 
 using namespace cv;
 //initial min and max HSV filter values.
@@ -42,15 +43,21 @@ const string windowName1 = "HSV Image";
 const string windowName2 = "Thresholded Image";
 const string windowName3 = "After Morphological Operations";
 const string trackbarWindowName = "Trackbars";
+
+std::ofstream frames_stream("hsvValues.txt");
+
 void on_trackbar( int, void* )
 {//This function gets called whenever a
 	// trackbar position is changed
-
-
-
-
-
+	frames_stream << H_MIN << " " << H_MAX << " " << S_MIN << " " << S_MAX << " " << V_MIN << " " << V_MAX << "\n";
+	createTrackbar( "H_MIN", trackbarWindowName, &H_MIN, H_MAX, on_trackbar );
+    createTrackbar( "H_MAX", trackbarWindowName, &H_MAX, H_MAX, on_trackbar );
+    createTrackbar( "S_MIN", trackbarWindowName, &S_MIN, S_MAX, on_trackbar );
+    createTrackbar( "S_MAX", trackbarWindowName, &S_MAX, S_MAX, on_trackbar );
+    createTrackbar( "V_MIN", trackbarWindowName, &V_MIN, V_MAX, on_trackbar );
+    createTrackbar( "V_MAX", trackbarWindowName, &V_MAX, V_MAX, on_trackbar );
 }
+
 string intToString(int number){
 
 
