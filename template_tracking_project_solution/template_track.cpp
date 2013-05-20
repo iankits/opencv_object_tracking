@@ -4,6 +4,14 @@
  *
  * Author: Ankit Singh (ankitsingh.05@gmail.com)
  *
+ * User Interaction Required:
+ *  Users has to change between methods using trackbar. The best methods
+ *  for tracking are
+ *
+ *     method=CV_TM_CCOEFF or method=CV_TM_CCOEFF_NORMED
+ *  
+ *  And advised to switch between these two methods only
+ *
  * @Input:
  *   Video file & template of turtle (can be found in "test_templates/")
  *
@@ -105,7 +113,7 @@ int main( int argc, char** argv ){
     // char* trackbar_label = "Method: \n 0: TM COEFF \n 1: TM COEFF NORMED";
     createTrackbar( trackbar_label, image_window, &match_method, max_Trackbar, MatchingMethod );
 
-    MatchingMethod( 0, 0 );
+    MatchingMethod( 4, 0 );
     
     int c = cvWaitKey(5);    
     //If 'ESC' is pressed, break the loop
