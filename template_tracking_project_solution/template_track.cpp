@@ -61,11 +61,11 @@ bool check_object_movement(int x, int y);
 
 int main( int argc, char** argv ){
   
-  VideoCapture videoSource;
-  frames_stream << "frameNumber" << "\tx" << "\t\ty" << "\t\tTimestamp\n"; 
+  VideoCapture videoSource; 
   
-  if( argc < 2 ){
-    printf( "\n Error! No video data!!! \n" );
+  if( argc < 3 ){
+    printf( "\n Error! No video data and template!!! \n" );
+    printf( "\n\t USAGE: \t  ./templateTrack <VIDEO> <TEMPLATE> \n\n" );
     return -1;
   }
   
@@ -73,6 +73,8 @@ int main( int argc, char** argv ){
     exit(1);         // Exit if fail
   }
   
+  frames_stream << "frameNumber" << "\tx" << "\t\ty" << "\t\tTimestamp\n";
+
   videoSource.set(CV_CAP_PROP_CONVERT_RGB, 1);
  
   bool status;
@@ -113,7 +115,7 @@ int main( int argc, char** argv ){
     // char* trackbar_label = "Method: \n 0: TM COEFF \n 1: TM COEFF NORMED";
     createTrackbar( trackbar_label, image_window, &match_method, max_Trackbar, MatchingMethod );
 
-    MatchingMethod( 4, 0 );
+    MatchingMethod( 0, 0 );
     
     int c = cvWaitKey(5);    
     //If 'ESC' is pressed, break the loop
