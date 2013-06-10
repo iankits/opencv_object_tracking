@@ -1,4 +1,6 @@
-This project is the solution to the problem statement provided for the job interview.
+This project is the solution to the problem statement mentioned in the wiki of this project repository.
+
+The sample video for testing the program can be downloaded from here: https://www.dropbox.com/sh/t40lp3qphao7dfy/kCCnYSo_Zl#f:Video%2095.mp4 .
 
 The solution is not very polished and need more work. But given the time limit and effort to solve the problem is satisfactory.
 
