@@ -65,7 +65,8 @@ int main( int argc, char** argv ){
   
   if( argc < 3 ){
     printf( "\n Error! No video data and template!!! \n" );
-    printf( "\n\t USAGE: \t  ./templateTrack <VIDEO> <TEMPLATE> \n\n" );
+    printf( "\n\t USAGE: \t ./templateTrack <OPTIONS> <VIDEO> <TEMPLATE> \n\n" );
+    printf( "\n\t EXAMPLE: \t ./templateTrack 1 sample.mpg turtle.png \n\n" );
     return -1;
   }
   
